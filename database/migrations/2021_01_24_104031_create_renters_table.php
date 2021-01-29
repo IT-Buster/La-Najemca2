@@ -21,10 +21,11 @@ class CreateRentersTable extends Migration
             $table->string('id_card')->unique();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
 
-       
+
     }
 
     /**

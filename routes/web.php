@@ -26,3 +26,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::group(['middleware' => 'auth'], function () {
+    //Route::resource('tasks', \App\Http\Controllers\TasksController::class);
+
+    Route::resource('users', \App\Http\Controllers\UsersController::class);
+    Route::resource('renters', \App\Http\Controllers\RenterController::class);
+    Route::resource('flats', \App\Http\Controllers\FlatController::class);
+    Route::resource('meters', \App\Http\Controllers\MeterController::class);
+    Route::resource('meter_state', \App\Http\Controllers\MeterStateController::class);
+    Route::resource('bills', \App\Http\Controllers\BillController::class);
+    Route::resource('contracts', \App\Http\Controllers\ContractController::class);
+});
